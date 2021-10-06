@@ -70,7 +70,7 @@ const QuestionCard = () => {
     const userAnswer = divOfUserAnswer.textContent.split('').slice(1).join(''); 
 
     divOfUserAnswer.style.backgroundColor = "#F9A826"
-    divOfUserAnswer.classList.toggle("has-text-white");
+    divOfUserAnswer.style.color = "#FFF";
 
     // Disables all other responses when clicking on a response
     answersNodes.map(node => node.style.pointerEvents = "none");
@@ -78,20 +78,18 @@ const QuestionCard = () => {
     // here we wait for 1.5 second before displaying the correct answer to the user
     setTimeout(() => {
       if (userAnswer === correctAnswer) {
-        divOfUserAnswer.style.removeProperty("backgroundColor");
-        divOfUserAnswer.classList.toggle('has-background-success');
+        divOfUserAnswer.style.backgroundColor = "#60BF88";
         divOfUserAnswer.innerHTML += "<span class='material-icons'>check_circle</span>";
 
         // increment the user score with useRef
         score.current++;
       }
       else {
-        divOfUserAnswer.style.removeProperty("backgroundColor");
-        divOfUserAnswer.classList.toggle('has-background-danger');
+        divOfUserAnswer.style.backgroundColor = "#EA8282";
         divOfUserAnswer.innerHTML += "<span class='material-icons'>highlight_off</span>";
-        divOfCorrectAnswer.classList.toggle("has-background-success");
+        divOfCorrectAnswer.style.backgroundColor = "#60BF88";
         divOfCorrectAnswer.innerHTML += "<span class='material-icons'>check_circle</span>";
-        divOfCorrectAnswer.classList.toggle("has-text-white");
+        divOfCorrectAnswer.style.color = "#FFF";
 
       };
       // we reactivate the button next 
